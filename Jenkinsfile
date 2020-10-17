@@ -34,6 +34,44 @@ pipeline {
                 }
             }
         }
+        stage('[Test parallel]') {
+           parallel {
+                stage('Branch A') {
+                    agent {
+                        label "for-branch-a"
+                    }
+                    steps {
+                        StepName = "${env.STAGE_NAME}"
+                        echo "On Branch A"
+                    }
+                post{
+                    success{
+                        setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
+                    }
+                    failure{
+                        setBuildStatus("Build failed", "FAILURE", "${StepName}");
+                    }
+                }
+                }
+                stage('Branch B') {
+                    agent {
+                        label "for-branch-b"
+                    }
+                    steps {
+                        StepName = "${env.STAGE_NAME}"
+                        echo "On Branch B"
+                    }
+                post{
+                    success{
+                        setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
+                    }
+                    failure{
+                        setBuildStatus("Build failed", "FAILURE", "${StepName}");
+                    }
+                }
+                }
+            }
+        }
         stage('[Deploy and train on stage]') {
             steps {
                 script{
@@ -53,9 +91,6 @@ pipeline {
             }
         }
         stage('[Validate and test on stage]') {
-            options {
-                timeout(time: 10, unit: 'SECONDS') 
-            }
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
