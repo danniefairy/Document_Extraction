@@ -37,9 +37,6 @@ pipeline {
         stage('[Test parallel]') {
            parallel {
                 stage('Branch A') {
-                    agent {
-                        label "for-branch-a"
-                    }
                     steps {
                         script{
                             StepName = "${env.STAGE_NAME}"
@@ -56,9 +53,6 @@ pipeline {
                 }
                 }
                 stage('Branch B') {
-                    agent {
-                        label "for-branch-b"
-                    }
                     steps {
                         script{
                             StepName = "${env.STAGE_NAME}"
