@@ -1,3 +1,10 @@
 FROM python:3.7-stretch
 
-RUN pip install -r ./scripts/requirements.txt
+WORKDIR /scripts
+
+ADD . /scripts
+
+RUN ls /
+RUN ls /scripts
+
+RUN pip install -r /scripts/requirements.txt
