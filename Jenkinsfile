@@ -58,7 +58,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // run the testing script
-                    bat "Run the testing script"
+                    bat "echo \"Run the testing script\""
                     bat "${PYTHON} scripts\\test\\test.py"
                 }
             }
