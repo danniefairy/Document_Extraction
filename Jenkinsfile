@@ -12,7 +12,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // download and build the docker image if it doesn't exist.
-                    bat "docker image build -f ./scripts/Dockerfile -t document_extraction_image ."
+                    bat "docker image build -f ./scripts/docker/Dockerfile -t document_extraction_image ."
                 }
             }
             post{
