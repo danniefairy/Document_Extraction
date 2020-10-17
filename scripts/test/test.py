@@ -32,6 +32,7 @@ But she also acknowledged the role students played in the spread getting out of 
 "I do believe that it is PARTLY [the student body's] fault," she said. "I believe that much of the spreading could have been prevented if the students hadn't partied or hadn't gone anywhere without masks on.\""""
 
 import nltk.data
+nltk.download('punkt')
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 sentences = tokenizer.tokenize(documents)
 sentence_embeddings = model.encode(sentences, 512)

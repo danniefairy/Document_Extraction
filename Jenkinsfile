@@ -12,8 +12,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // install the dependency if it doesn't exist.
-                    bat "C:\\Users\\user\\Anaconda3\\python.exe scripts\\test\\test.py"
-                }
+                                    }
             }
             post{
                 success{
@@ -49,6 +48,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // run the testing script
+                    bat "C:\\Users\\user\\Anaconda3\\python.exe scripts\\test\\test.py"
                 }
             }
             post{
