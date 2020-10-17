@@ -10,7 +10,9 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    bat "python test.py"
+
+                    // download and build the docker image if it doesn't exist.
+                    bat "docker image build -f ./scripts/Dockerfile -t Document_Extraction_Image"
                 }
             }
             post{
@@ -26,7 +28,12 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    bat "echo \"Deploy and train on stage\""
+
+                    // build the container if it doesn't exist.
+
+                    // install the dependency
+
+                    // run the train script
                 }
             }
             post{
@@ -42,7 +49,8 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    bat "echo \"Validate and test on stage\""
+
+                    // run the testing script
                 }
             }
             post{
@@ -58,7 +66,8 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    bat "echo \"Deploy on production\""
+                    
+                    // run the service
                 }
             }
             post{
