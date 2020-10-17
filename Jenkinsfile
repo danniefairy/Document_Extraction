@@ -57,9 +57,14 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
-                    // run the testing script
-                    bat "echo \"Run the testing script\""
+                    // run the testing script of data science part.
+                    bat "echo \"Run the testing script of data science part\""
                     bat "${PYTHON} scripts\\test\\test.py"
+
+                    // run the testing script of server part.
+                    bat "echo \"Run the testing script of server part\""
+                    bat "${PYTHON} scripts\\server\\app.py"
+
                 }
             }
             post{
