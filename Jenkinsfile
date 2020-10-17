@@ -63,7 +63,7 @@ pipeline {
 
                     // run the testing script of server part.
                     bat "echo \"Run the testing script of server part\""
-                    bat "${PYTHON} scripts\\server\\app.py"
+                    bat "${PYTHON} scripts\\server\\app.py &"
 
                 }
             }
