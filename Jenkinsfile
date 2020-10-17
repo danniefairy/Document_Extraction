@@ -52,7 +52,6 @@ pipeline {
                 }
             }
         }
-        /*
         stage('[Validate and test on stage]') {
            parallel {
                 stage('Run the service') {
@@ -97,7 +96,6 @@ pipeline {
                 }
             }
         }
-        */
         stage('[Deploy on production]') {
             steps {
                 script{
