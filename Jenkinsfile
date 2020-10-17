@@ -84,7 +84,7 @@ void setBuildStatus(String message, String state, String taskTitle) {
     // Send the commit status to github.
     step([
         $class: "GitHubCommitStatusSetter",
-        reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/CICD-Project"],
+        reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/danniefairy/Document_Extraction"],
         contextSource: [$class: "ManuallyEnteredCommitContextSource", context: taskTitle],
         errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
         statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
