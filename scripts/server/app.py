@@ -1,3 +1,7 @@
+'''
+Flask tutorial:
+    https://www.maxlist.xyz/2020/05/01/flask-list/?fbclid=IwAR1kJ8_izhNQWDzHx6YWtrM4RrfbSpxq2h81ERSGQo24lx2kPA_3eURkc70
+'''
 from flask import Flask
 from flask import request
 
