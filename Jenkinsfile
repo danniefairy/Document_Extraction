@@ -11,8 +11,8 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
-                    // download and build the docker image if it doesn't exist.
-                    bat "docker image build -f ./scripts/docker/Dockerfile -t document_extraction_image ."
+                    // install the dependency if it doesn't exist.
+                    bat "C:\Users\user\Anaconda3\python.exe scripts/test/test.py"
                 }
             }
             post{
@@ -30,8 +30,6 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // build the container if it doesn't exist.
-
-                    // install the dependency
 
                     // run the train script
                 }
