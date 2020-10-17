@@ -42,7 +42,7 @@ pipeline {
                     }
                     steps {
                         StepName = "${env.STAGE_NAME}"
-                        echo "On Branch A"
+                        bat "echo \"Branch A\""
                     }
                 post{
                     success{
@@ -59,7 +59,7 @@ pipeline {
                     }
                     steps {
                         StepName = "${env.STAGE_NAME}"
-                        echo "On Branch B"
+                        bat "echo \"Branch B\""
                     }
                 post{
                     success{
