@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    bat "ls"
+                    bat "python test.py"
                 }
             }
             post{
