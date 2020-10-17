@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    bat "echo \"Prepare component\""
+                    bat "echo ls"
                 }
             }
             post{
