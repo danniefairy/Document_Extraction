@@ -1,3 +1,7 @@
+'''
+ref:
+    https://www.youtube.com/watch?v=JU6eSLsp6vI
+'''
 from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer('bert-base-nli-mean-tokens')
