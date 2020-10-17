@@ -14,7 +14,7 @@ pipeline {
                 }
             }                
         }
-        stage('[Prepare component]') {
+        stage('Prepare component') {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('[Deploy and train on stage]') {
+        stage('Deploy and train on stage') {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('[Validate and test on stage]') {
+        stage('Validate and test on stage') {
            parallel {
                 stage('Run the service') {
                     steps {
@@ -93,7 +93,7 @@ pipeline {
                 }
             }
         }
-        stage('[Deploy on production]') {
+        stage('Deploy on production') {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"                    
