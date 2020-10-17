@@ -22,7 +22,7 @@ pipeline {
 
                     // install the dependency if it doesn't exist.
                     bat "echo \"Install the requirements\""
-                    bat "${PYTHON} pip install -r scripts\\requirements.txt"
+                    bat "${PYTHON} -m pip install -r scripts\\requirements.txt"
                 }
             }
             post{
