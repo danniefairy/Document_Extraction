@@ -53,6 +53,9 @@ pipeline {
             }
         }
         stage('[Validate and test on stage]') {
+            options {
+                timeout(time: 10, unit: 'SECONDS') 
+            }
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
@@ -63,7 +66,7 @@ pipeline {
 
                     // run the testing script of server part.
                     bat "echo \"Run the testing script of server part\""
-                    bat "${PYTHON} scripts\\server\\app.py &"
+                    bat "${PYTHON} scripts\\server\\app.py"
 
                 }
             }
