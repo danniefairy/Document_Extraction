@@ -6,6 +6,15 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') 
     }
     stages {
+        stage('Initialize the variables') {
+            // Each stage is made up of steps
+            steps{
+                script{
+                    StepName = "${env.STAGE_NAME}"
+                    PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
+                }
+            }                
+        }
         stage('[Prepare component]') {
             steps {
                 script{
@@ -13,7 +22,7 @@ pipeline {
 
                     // install the dependency if it doesn't exist.
                     bat "echo \"Install the requirements\""
-                    bat "pip install -r scripts\\requirements.txt"
+                    bat "${PYTHON} pip install -r scripts\\requirements.txt"
                 }
             }
             post{
@@ -50,7 +59,7 @@ pipeline {
 
                     // run the testing script
                     bat "Run the testing script"
-                    bat "C:\\Users\\user\\Anaconda3\\python.exe scripts\\test\\test.py"
+                    bat "${PYTHON} scripts\\test\\test.py"
                 }
             }
             post{
