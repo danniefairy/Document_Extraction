@@ -19,7 +19,6 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-
                     // install the dependency if it doesn't exist.
                     bat "echo \"Install the requirements\""
                     bat "${PYTHON} -m pip install -r scripts\\requirements.txt"
@@ -38,7 +37,6 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"
-
                     // run the train script
                     bat "echo \"Pass\""
                 }
@@ -99,8 +97,7 @@ pipeline {
         stage('[Deploy on production]') {
             steps {
                 script{
-                    StepName = "${env.STAGE_NAME}"
-                    
+                    StepName = "${env.STAGE_NAME}"                    
                     // run the service
                 }
             }
