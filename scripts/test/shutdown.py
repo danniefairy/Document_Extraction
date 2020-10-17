@@ -1,5 +1,5 @@
-import requests 
 import sys
+import requests 
   
 # api-endpoint 
 URL = "http://localhost:5000/shutdown"
