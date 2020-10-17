@@ -41,8 +41,10 @@ pipeline {
                         label "for-branch-a"
                     }
                     steps {
-                        StepName = "${env.STAGE_NAME}"
-                        bat "echo \"Branch A\""
+                        script{
+                            StepName = "${env.STAGE_NAME}"
+                            bat "echo \"Branch A\""
+                        }
                     }
                 post{
                     success{
@@ -58,8 +60,10 @@ pipeline {
                         label "for-branch-b"
                     }
                     steps {
-                        StepName = "${env.STAGE_NAME}"
-                        bat "echo \"Branch B\""
+                        script{
+                            StepName = "${env.STAGE_NAME}"
+                            bat "echo \"Branch B\""
+                        }
                     }
                 post{
                     success{
