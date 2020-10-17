@@ -12,7 +12,9 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // install the dependency if it doesn't exist.
-                                    }
+                    bat "echo \"Install the requirements\""
+                    bat "pip install -r scripts\\requirements.txt"
+                }
             }
             post{
                 success{
@@ -28,9 +30,8 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
 
-                    // build the container if it doesn't exist.
-
                     // run the train script
+                    bat "echo \"Pass\""
                 }
             }
             post{
@@ -48,6 +49,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
 
                     // run the testing script
+                    bat "Run the testing script"
                     bat "C:\\Users\\user\\Anaconda3\\python.exe scripts\\test\\test.py"
                 }
             }
