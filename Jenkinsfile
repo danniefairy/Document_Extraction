@@ -52,50 +52,6 @@ pipeline {
                 }
             }
         }
-        stage('[Validate and test on stage]') {
-           parallel {
-                stage('Run the service') {
-                    steps {
-                        script{
-                            StepName = "${env.STAGE_NAME}"
-                            // run the testing script of server part.
-                            bat "echo \"Run the testing script of server part\""
-                            //bat "${PYTHON} scripts\\server\\app.py"
-                        }
-                    }
-                post{
-                    success{
-                        setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
-                    }
-                    failure{
-                        setBuildStatus("Build failed", "FAILURE", "${StepName}");
-                    }
-                }
-                }
-                stage('Run the test') {
-                    steps {
-                        script{
-                            StepName = "${env.STAGE_NAME}"
-                            // run the testing script of data science part.
-                            bat "echo \"Run the testing script of data science part\""
-                            //bat "${PYTHON} scripts\\test\\test.py"
-
-                            // stop the running service.
-                            bat "echo \"Stop the running service\""
-                            //bat "${PYTHON} scripts\\test\\shutdown.py"
-                        }
-                    }
-                post{
-                    success{
-                        setBuildStatus("Build succeeded", "SUCCESS", "${StepName}");
-                    }
-                    failure{
-                        setBuildStatus("Build failed", "FAILURE", "${StepName}");
-                    }
-                }
-                }
-            }
-        }
         stage('[Deploy on production]') {
             steps {
                 script{
