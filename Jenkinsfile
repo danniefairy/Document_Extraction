@@ -78,7 +78,7 @@ pipeline {
                             StepName = "${env.STAGE_NAME}"
                             // check the server is on.
                             bat "echo \"Check the server is on.\""
-                            bat "${PYTHON} -m unittest server/test/check.py"
+                            bat "${PYTHON} server\\test\\check.py"
 
                             // run the testing script of data science part.
                             bat "echo \"Run the testing script of data science part\""

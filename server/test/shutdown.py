@@ -1,5 +1,6 @@
 import requests 
-  
+import sys
+
 # api-endpoint 
 URL = "http://localhost:5000/shutdown"
   
@@ -8,3 +9,4 @@ try:
     r = requests.get(url=URL)
 except Exception as e:
     print(e)
+    sys.exit()
