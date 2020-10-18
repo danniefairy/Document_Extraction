@@ -4,6 +4,7 @@ run the test:
 ref:
     https://www.youtube.com/watch?v=JU6eSLsp6vI
 '''
+import logging
 from .. src.document_extractor import BertDocumentExtractor
 
 documents = """The president of the State University of New York at Oneonta has resigned, as the school grapples with hundreds of reported Covid-19 cases within the university since the beginning of the semester.
@@ -62,7 +63,7 @@ class TestDocumentExtractor(unittest.TestCase):
             }
         }
         for test_case in test_cases:
-            print("Test Case: {}".format(test_case))
+            logging.info("Test Case: {}".format(test_case))
             got = BERT_DOCUMENT_EXTRACTOR.run(test_cases[test_case]['input'])
             self.assertEqual(got, test_cases[test_case]['want'])
 
@@ -101,7 +102,7 @@ class TestDocumentExtractor(unittest.TestCase):
             }
         }
         for test_case in test_cases:
-            print("Test Case: {}".format(test_case))
+            logging.info("Test Case: {}".format(test_case))
             got = BERT_DOCUMENT_EXTRACTOR.run(test_cases[test_case]['input'])
             self.assertEqual(type(got), test_cases[test_case]['want_type'])
 

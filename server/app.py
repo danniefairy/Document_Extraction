@@ -25,7 +25,7 @@ def hello_world():
 
 if __name__ == '__main__':
     # initialize the document extraction
-    document_extractor = BertDocumentExtractor()
+    #document_extractor = BertDocumentExtractor()
 
     # run server
     app.run()
