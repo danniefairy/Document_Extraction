@@ -4,6 +4,7 @@ Flask tutorial:
 '''
 from flask import Flask
 from flask import request
+from src.document_extractor import BertDocumentExtractor
 
 app = Flask(__name__)
 
@@ -23,4 +24,5 @@ def hello_world():
     return 'Hello, World!'
 
 if __name__ == '__main__':
+    x=BertDocumentExtractor(document="13")
     app.run()

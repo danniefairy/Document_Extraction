@@ -5,6 +5,7 @@ ref:
     https://www.youtube.com/watch?v=JU6eSLsp6vI
 '''
 from sentence_transformers import SentenceTransformer
+from .. src.document_extractor import BertDocumentExtractor
 
 model = SentenceTransformer('bert-base-nli-mean-tokens')
 documents = """The president of the State University of New York at Oneonta has resigned, as the school grapples with hundreds of reported Covid-19 cases within the university since the beginning of the semester.
