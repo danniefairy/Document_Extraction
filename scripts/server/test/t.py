@@ -1,3 +1,3 @@
-from ..Dcoument_Extractor.document_extractor import test
+from src.my_class import test
 
 t = test()
