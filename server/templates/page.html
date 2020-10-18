@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/page.css') }}">
+        <script src="static/js/page.js"></script>
+    </head>
+<body>
+    <div id="loading"></div>
+    <div id="content">
+        <form method="post">
+            <textarea name="text"></textarea>
+            <input type="submit" id="submit_button">
+        </form>
+    
+        {% for i in range(length) %}
+            <p>Here is my variable: {{ result[i] }}</p>
+        {% endfor %}        
+    </div>
+
+    <script>
+        // event handler
+        document.getElementById("submit_button").addEventListener("click", loading);
+    </script>
+</body>
+</html>
