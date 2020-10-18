@@ -62,8 +62,8 @@ pipeline {
                                 // run the testing script of server part.
                                 bat "echo \"Run the testing script of server part\""
                                 bat "${PYTHON} server\\app.py"
-                            } catch(e){
-                                print(e=="hudson.AbortException: script returned exit code 15")
+                            } catch(hudson.AbortException ae){
+                                print(ae.getMessage().contains('script returned exit code 15'))
                             }
 
                         }
