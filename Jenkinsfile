@@ -63,9 +63,13 @@ pipeline {
                                 bat "echo \"Run the testing script of server part\""
                                 bat "${PYTHON} server\\app.py"
                             } catch(hudson.AbortException ae){
-                                 if(!ae.getMessage().contains('script returned exit code 15')){
+                                // The process was explicitly killed by somebody wielding the kill program is acceptable
+                                // ref: https://wiki.jenkins.io/display/JENKINS/Job+Exit+Status
+                                if(ae.getMessage().contains('script returned exit code 15')){
+                                   print("error code 15 is acceptable.")
+                                } else {
                                     throw ae
-                                 }
+                                }
                             }
 
                         }
