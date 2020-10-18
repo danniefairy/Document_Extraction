@@ -1,12 +1,14 @@
-import sys
-import requests 
+import requests
+import time
   
 # api-endpoint 
 URL = "http://localhost:5000/shutdown"
   
 # sending get request and saving the response as response object 
-try:
-    r = requests.get(url = URL) 
-except Exception as e:
-    print(e)
-    sys.exit(1)
+while True:
+    try:
+        r = requests.get(url=URL) 
+        break
+    except Exception as e:
+        print(e)
+        time.sleep(5)
