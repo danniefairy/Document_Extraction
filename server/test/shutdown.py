@@ -9,4 +9,4 @@ try:
     r = requests.get(url=URL)
 except Exception as e:
     print(e)
-    sys.exit()
+    sys.exit(1)
