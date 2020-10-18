@@ -1,4 +1,6 @@
 '''
+run the test:
+    https://stackoverflow.com/questions/24622041/python-importing-a-module-from-a-parallel-directory
 ref:
     https://www.youtube.com/watch?v=JU6eSLsp6vI
 '''

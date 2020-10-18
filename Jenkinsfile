@@ -60,7 +60,7 @@ pipeline {
                             StepName = "${env.STAGE_NAME}"
                             // run the testing script of server part.
                             bat "echo \"Run the testing script of server part\""
-                            bat "${PYTHON} scripts\\server\\app.py"
+                            bat "${PYTHON} server\\app.py"
                         }
                     }
                     post{
@@ -78,13 +78,12 @@ pipeline {
                             StepName = "${env.STAGE_NAME}"
                             // run the testing script of data science part.
                             bat "echo \"Run the testing script of data science part\""
-                            //bat "${PYTHON} scripts\\server\\test\\test.py"
-                            bat "cd scripts/server"
-                            bat "${PYTHON} -m test.t"
+                            //bat "${PYTHON} server\\test\\test.py"
+                            bat "${PYTHON} -m server.test.t"
 
                             // stop the running service.
                             bat "echo \"Stop the running service\""
-                            bat "${PYTHON} scripts\\server\\test\\shutdown.py"
+                            bat "${PYTHON} server\\test\\shutdown.py"
                         }
                     }
                     post{
