@@ -78,11 +78,11 @@ pipeline {
                             StepName = "${env.STAGE_NAME}"
                             // run the testing script of data science part.
                             bat "echo \"Run the testing script of data science part\""
-                            bat "${PYTHON} scripts\\test\\test.py"
+                            bat "${PYTHON} scripts\\server\\test\\test.py"
 
                             // stop the running service.
                             bat "echo \"Stop the running service\""
-                            bat "${PYTHON} scripts\\test\\shutdown.py"
+                            bat "${PYTHON} scripts\\server\\test\\shutdown.py"
                         }
                     }
                     post{
