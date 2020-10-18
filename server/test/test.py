@@ -4,10 +4,8 @@ run the test:
 ref:
     https://www.youtube.com/watch?v=JU6eSLsp6vI
 '''
-from sentence_transformers import SentenceTransformer
 from .. src.document_extractor import BertDocumentExtractor
 
-model = SentenceTransformer('bert-base-nli-mean-tokens')
 documents = """The president of the State University of New York at Oneonta has resigned, as the school grapples with hundreds of reported Covid-19 cases within the university since the beginning of the semester.
 
 In a statement announcing the new interim president on Thursday, State University of New York Chancellor Jim Malatras said that Dr. Barbara Jean Morris had "transitioned from her position as president" and that she wanted to "pursue other opportunities."
@@ -38,27 +36,6 @@ Kenney also said that "there could have also been more restrictions on social di
 But she also acknowledged the role students played in the spread getting out of control.
 "I do believe that it is PARTLY [the student body's] fault," she said. "I believe that much of the spreading could have been prevented if the students hadn't partied or hadn't gone anywhere without masks on.\""""
 
-import nltk.data
-nltk.download('punkt')
-tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
-sentences = tokenizer.tokenize(documents)
-sentence_embeddings = model.encode(sentences, 512)
-
-import numpy as np
-from sklearn.cluster import KMeans
-
-labels = KMeans(n_clusters=len(sentences)//5).fit_predict(np.array(sentence_embeddings))
-label_line = {}
-for i in range(len(labels)):
-    if labels[i] not in label_line:
-        label_line[labels[i]] = [i]
-    else:
-        label_line[labels[i]] += [i]
-n_lines = []
-for label in label_line:
-    if len(label_line[label])==1:
-        n_lines += label_line[label]
-    else:
-        n_lines += [label_line[label][0], label_line[label][-1]]
-for sentence in [sentences[i] for i in sorted(n_lines)]:
-    print(sentence)
+document_extractor = BertDocumentExtractor(document = documents)
+result = document_extractor.run()
+print(result, len(result))
