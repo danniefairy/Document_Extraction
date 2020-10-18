@@ -58,9 +58,14 @@ pipeline {
                     steps {
                         script{
                             StepName = "${env.STAGE_NAME}"
-                            // run the testing script of server part.
-                            bat "echo \"Run the testing script of server part\""
-                            bat "${PYTHON} server\\app.py"
+                            try{
+                                // run the testing script of server part.
+                                bat "echo \"Run the testing script of server part\""
+                                bat "${PYTHON} server\\app.py"
+                            } catch(e){
+                                print(e)
+                            }
+
                         }
                     }
                     post{
