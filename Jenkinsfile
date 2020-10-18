@@ -63,7 +63,7 @@ pipeline {
                                 bat "echo \"Run the testing script of server part\""
                                 bat "${PYTHON} server\\app.py"
                             } catch(e){
-                                print(e)
+                                print(e=="hudson.AbortException: script returned exit code 15")
                             }
 
                         }
