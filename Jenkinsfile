@@ -78,7 +78,7 @@ pipeline {
                             StepName = "${env.STAGE_NAME}"
                             // run the testing script of data science part.
                             bat "echo \"Run the testing script of data science part\""
-                            //bat "${PYTHON} server\\test\\test.py"
+                            bat "${PYTHON} server\\test\\test.py"
                             bat "${PYTHON} -m server.test.t"
 
                             // stop the running service.
