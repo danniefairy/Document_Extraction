@@ -1,12 +1,16 @@
 '''
 Flask tutorial:
     https://www.maxlist.xyz/2020/05/01/flask-list/?fbclid=IwAR1kJ8_izhNQWDzHx6YWtrM4RrfbSpxq2h81ERSGQo24lx2kPA_3eURkc70
+Flask CORS:
+    https://medium.com/@charming_rust_oyster_221/flask-%E5%AF%A6%E7%8F%BE-cors-%E8%B7%A8%E5%9F%9F%E8%AB%8B%E6%B1%82%E7%9A%84%E6%96%B9%E6%B3%95-c51b6e49a8b5
 '''
 import sys
 from flask import Flask, request, render_template
+from flask_cors import CORS
 from src.document_extractor import BertDocumentExtractor
 
 app = Flask(__name__)
+CORS(app)
 
 
 def _shutdown_server():
