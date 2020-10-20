@@ -5,16 +5,24 @@
         <script src="static/js/page.js"></script>
     </head>
 <body onload="init();">
+    
+    <div class="head">Document Extractor</div>
     <div id="loading"></div>
 
     <div id="content">
-        <div>
-            <textarea id="doc"></textarea>
-            <input type="submit" id="submit_button">
+        <div id="description"  class="description">
+            This simple tool
+        </div>
+        <div class="main">
+            <div class="box">            
+                <textarea id="doc"></textarea>
+                <input type="submit" id="submit_button">
+            </div>    
+            <div id="result" class="box">
+                <textarea id="result"></textarea>
+            </div>  
         </div>
     
-        <div id="result">
-        </div>      
     </div>
 </body>
 </html>

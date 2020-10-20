@@ -1,6 +1,8 @@
 function init(){
     // register the event handler
     document.getElementById("submit_button").addEventListener("click", getResult);
+
+    var result_document;
 }
 
 function getResult(){
@@ -19,7 +21,11 @@ function getResult(){
     .then((response) => {
         // get response
         var result = response.data.result;
-        console.log(result);
+        result_document = "";
+        for (var i=0; i<result.length;i++){
+            result_document += result[i]+"<br><br>";
+        }
+        document.getElementById("result").innerHTML = result_document;
 
         // hide loading icon
         hide_loading();
@@ -28,6 +34,11 @@ function getResult(){
         console.log(error);
     });
 
+}
+
+function concate_result(sentence){
+    result_document += item+"/n";
+    document.getElementById("result").innerHTML = result_document;
 }
 
 function show_loading(){

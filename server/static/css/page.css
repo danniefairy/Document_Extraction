@@ -1,5 +1,48 @@
 body {
-    background-image: url('/static/images/background.jpg');
+    /*background-image: url('/static/images/background.jpg');*/
+    margin: 0px;
+    background-color: lightgray;
+}
+
+textarea {
+    width:400px;
+    height: 400px;
+    padding: 3px;
+    border: none;
+    line-height: 20px;
+    border-radius: 25px;
+}
+
+.head {
+    background-color: black;/*#003344;*/
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+}
+
+.description{
+    text-align: center;
+    line-height: 20px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+.box{
+    width: 450px;
+    padding: 10px;
+    margin:10px;
+    
+    /* let dev align in the block and to the top */
+    display: inline-block;
+    vertical-align: top;
+
+    text-align: center;
+    line-height: 20px;
 }
 
 div#loading {
@@ -8,4 +51,4 @@ div#loading {
     display: none;
     background: url('/static/images/loadingimage.gif') center no-repeat;
     cursor: wait;
-    }
+}
