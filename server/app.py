@@ -5,7 +5,7 @@ Flask CORS:
     https://medium.com/@charming_rust_oyster_221/flask-%E5%AF%A6%E7%8F%BE-cors-%E8%B7%A8%E5%9F%9F%E8%AB%8B%E6%B1%82%E7%9A%84%E6%96%B9%E6%B3%95-c51b6e49a8b5
 '''
 import sys
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from src.document_extractor import BertDocumentExtractor
 
@@ -26,11 +26,21 @@ def shutdown():
     return 'Server shutting down...'
 
 
-@app.route('/', methods=['POST'])
+@app.route('/inference', methods=['POST'])
 def result():
-    document = request.form['text']
+    document = request.get_json()['params']['document']
     result = document_extractor.run(document)
-    return render_template('page.html', length=len(result), result=result)
+    
+    # test loading icon
+    import time
+    time.sleep(3)
+
+    return jsonify({"result": result})
+
+
+@app.route('/', methods=['POST'])
+def main():
+    return render_template('page.html')
 
 
 @app.route('/')

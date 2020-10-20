@@ -1,24 +1,20 @@
 <html>
     <head>
         <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/page.css') }}">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="static/js/page.js"></script>
     </head>
-<body>
+<body onload="init();">
     <div id="loading"></div>
-    <div id="content">
-        <form method="post">
-            <textarea name="text"></textarea>
-            <input type="submit" id="submit_button">
-        </form>
-    
-        {% for i in range(length) %}
-            <p>Here is my variable: {{ result[i] }}</p>
-        {% endfor %}        
-    </div>
 
-    <script>
-        // event handler
-        document.getElementById("submit_button").addEventListener("click", loading);
-    </script>
+    <div id="content">
+        <div>
+            <textarea id="doc"></textarea>
+            <input type="submit" id="submit_button">
+        </div>
+    
+        <div id="result">
+        </div>      
+    </div>
 </body>
 </html>
