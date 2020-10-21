@@ -10,7 +10,7 @@ class DocuemntExtractor(metaclass=abc.ABCMeta):
     @abc.abstractclassmethod
     def _document_segmentation(self, document):
         return NotImplemented
-    
+
     @abc.abstractclassmethod
     def _sentence_embedding(self):
         return NotImplemented
@@ -38,7 +38,7 @@ class BertDocumentExtractor(DocuemntExtractor):
         self._sentences = []
         self._sentence_embeddings = []
         self._labels = []
-    
+
     def _document_segmentation(self, document):
         self._sentences = self._tokenizer.tokenize(document)
 
@@ -63,17 +63,17 @@ class BertDocumentExtractor(DocuemntExtractor):
                 label_line[self._labels[i]] = [i]
             else:
                 label_line[self._labels[i]] += [i]
-                
+
         n_lines = []
         for label in label_line:
             if len(label_line[label]) == 1:
                 n_lines += label_line[label]
             else:
-                idx1, idx2 = random.sample(range(len(label_line[label])), 2)
+                idx1, idx2 = 0, random.sample(range(1, len(label_line[label]), 1), 1)[0]
                 n_lines += [label_line[label][idx1], label_line[label][idx2]]
 
         return [self._sentences[i] for i in sorted(n_lines)]
-    
+
     def run(self, document):
         try:
             self._document_segmentation(document)
@@ -83,3 +83,4 @@ class BertDocumentExtractor(DocuemntExtractor):
             return selected_sentence
         except Exception as e:
             return "Got error: {}".format(e)
+            

@@ -30,11 +30,6 @@ def shutdown():
 def result():
     document = request.get_json()['params']['document']
     result = document_extractor.run(document)
-    
-    # test loading icon
-    import time
-    time.sleep(1)
-
     return jsonify({"result": result})
 
 

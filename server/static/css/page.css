@@ -1,4 +1,4 @@
-body {
+.body {
     margin: 0px;    
 }
 
@@ -53,14 +53,6 @@ textarea {
     line-height: 20px;
 }
 
-div#loading {
-    width: 235px;
-    height: 235px;
-    display: none;
-    background: url('/static/images/loadingimage.gif') center no-repeat;
-    cursor: wait;
-}
-
 .submit_button{
     background-color: white;
     border: 2px solid rgb(179, 179, 179);
@@ -92,3 +84,14 @@ div#loading {
     text-align: center;
     line-height: 20px;
 }
+
+.duration_box{
+    margin-top: 50px;
+    
+    /* let dev align in the block and to the top */
+    display: inline-block;
+    vertical-align: top;
+
+    text-align: center;
+}
+

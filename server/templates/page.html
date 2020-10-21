@@ -4,10 +4,9 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="static/js/page.js"></script>
     </head>
-<body onload="init();">
+<body onload="init();" id="body">
     
     <div class="head">Document Extractor</div>
-    <div id="loading"></div>
 
     <div id="content">
         <div id="description"  class="description">
@@ -24,7 +23,8 @@
                 <div class="button_box">
                     <button id="submit_button" class="submit_button">Extract</button>
                 </div>
-                <div class="box"></div>
+                <div id="duration" class="duration_box">
+                </div>
             </div>
             <div class="main">  
                 <div class="box">  
