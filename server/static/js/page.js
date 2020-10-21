@@ -23,9 +23,9 @@ function getResult(){
         var result = response.data.result;
         result_document = "";
         for (var i=0; i<result.length;i++){
-            result_document += result[i]+"<br><br>";
+            result_document += result[i]+"\n";
         }
-        document.getElementById("result").innerHTML = result_document;
+        document.getElementById("result").value = result_document;
 
         // hide loading icon
         hide_loading();

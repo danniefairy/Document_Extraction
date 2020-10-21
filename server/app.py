@@ -33,7 +33,7 @@ def result():
     
     # test loading icon
     import time
-    time.sleep(3)
+    time.sleep(1)
 
     return jsonify({"result": result})
 
