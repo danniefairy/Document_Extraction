@@ -1,48 +1,49 @@
 body {
-    /*background-image: url('/static/images/background.jpg');*/
-    margin: 0px;
-    background-color: lightgray;
+    margin: 0px;    
 }
 
 textarea {
-    width:400px;
-    height: 400px;
+    width:700px;
+    height: 700px;
     padding: 15px;
     border: none;
     line-height: 20px;
-    border-radius: 25px;
 }
 
 .head {
-    background-color: black;/*#003344;*/
-    color: white;
+    background-color: rgb(250, 250, 250);
     font-weight: bold;
     font-size: 30px;
-    text-align: center;
     padding: 10px;
+    line-height: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-bottom: grey 5px solid ;
 }
 
 .description{
     margin: auto;
-    margin-top: 10px;
+    margin-top: 100px;
+    margin-left: 5px;
+    margin-bottom: 10px;
 
     text-align: center;
-    line-height: 20px;
-    background-color: white;
-    opacity: 50%;
-    width: 890px;
-    border-radius: 4px;
+    font-size: 20px;
 }
 
 .main {
+    margin: auto;
     display: flex;
     justify-content: center;
+    background-color: rgb(230, 230, 230);
+    width: 1600px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .box{
-    width: 450px;
-    padding: 10px;
-    margin:10px;
+    width: 700px;
+    padding: 20px;
+    margin: 20px;
+    margin-top: 0px;
     
     /* let dev align in the block and to the top */
     display: inline-block;
@@ -61,16 +62,33 @@ div#loading {
 }
 
 .submit_button{
-    display: inline-block;
-    border-radius: 4px;
-    background-color: gray;
-    border: none;
-    color: #FFFFFF;
+    background-color: white;
+    border: 2px solid rgb(179, 179, 179);
+    color: black;
+    padding: 15px 32px;
     text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
     cursor: pointer;
-    margin: 5px;
+    border-radius: 4px; 
+}
+
+.button_div{
+    margin: auto;
+    background-color: rgb(230, 230, 230);
+    width: 1600px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.button_box{
+    margin-left: 60px;
+    margin-top: 20px;
+    
+    /* let dev align in the block and to the top */
+    display: inline-block;
+    vertical-align: top;
+
+    text-align: center;
+    line-height: 20px;
 }
