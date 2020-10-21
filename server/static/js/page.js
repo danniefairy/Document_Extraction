@@ -49,8 +49,6 @@ function concate_result(sentence){
 }
 
 function show_loading(){
-    //var loading_object = document.getElementById("loading");    
-    //loading_object.style.display = "block";
     document.getElementById('body').style.backgroundImage = "url('/static/images/loadingimage.gif')";
     document.getElementById('body').style.backgroundRepeat = "no-repeat";
     document.getElementById('body').style.backgroundPosition = "center";
@@ -60,8 +58,6 @@ function show_loading(){
 }
 
 function hide_loading(){
-    //var loading_object = document.getElementById("loading");
-    //loading_object.style.display = "none";
     document.getElementById('body').style.backgroundImage = "";
     var content_object = document.getElementById("content")
     content_object.style.display = "block"
