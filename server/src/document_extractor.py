@@ -29,7 +29,7 @@ class DocuemntExtractor(metaclass=abc.ABCMeta):
 
 
 class BertDocumentExtractor(DocuemntExtractor):
-    def __init__(self, ratio=0.2, bert_pretrain_model='bert-base-nli-mean-tokens', batch_size=512, nltk_tokenizer='tokenizers/punkt/english.pickle'):
+    def __init__(self, ratio=0.1, bert_pretrain_model='bert-large-nli-stsb-mean-tokens', batch_size=512, nltk_tokenizer='tokenizers/punkt/english.pickle'):
         self._ratio = ratio
         self._batch_size = batch_size
 
@@ -68,9 +68,11 @@ class BertDocumentExtractor(DocuemntExtractor):
         for label in label_line:
             if len(label_line[label]) == 1:
                 n_lines += label_line[label]
+            elif len(label_line[label]) == 2:
+                n_lines += [label_line[label][0], label_line[label][-1]]
             else:
-                idx1, idx2 = 0, random.sample(range(1, len(label_line[label]), 1), 1)[0]
-                n_lines += [label_line[label][idx1], label_line[label][idx2]]
+                idx_mid = random.sample(range(1, len(label_line[label])-1, 1), 1)[0]
+                n_lines += [label_line[label][0], label_line[label][idx_mid], label_line[label][-1]]
 
         return [self._sentences[i] for i in sorted(n_lines)]
 
