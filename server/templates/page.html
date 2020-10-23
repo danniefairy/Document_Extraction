@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="static/images/document_extraction.ico" />
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/page.css') }}">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="static/js/page.js"></script>
+    </head>
+<body onload="init();" id="body">
+    
+    <div class="head">Document Extractor</div>
+    
+    <div id="content">
+        <div id="description"  class="description">
+            <span>
+                This simple tool implements the paper 
+                <a href="https://arxiv.org/abs/1906.04165"><b>Leveraging BERT for Extractive Text Summarization on Lectures</b></a>
+                 to fulfill the document extraction.
+            </span>                
+        </div>
+                
+        <div>
+            <div class="button_div">
+                <div class="button_box">
+                    <button id="submit_button" class="submit_button">Extract</button>
+                </div>
+                <div class="language_selection_box">
+                    <select id="language-selection" class="language-selection">
+                        <option value="en">English</option>
+                        <option value="zh-tw">Chinese</option>
+                      </select>
+                </div>
+                <div id="duration" class="duration_box">
+                </div>
+            </div>
+            <div class="main">  
+                <div class="box">  
+                    <textarea id="doc" class="doc" placeholder="Paste your document here."></textarea>                
+                </div>    
+                <div class="box">
+                    <textarea id="result"></textarea>
+                </div>  
+            </div>               
+        </div> 
+    </div>
+</body>
+</html>

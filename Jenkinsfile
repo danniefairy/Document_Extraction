@@ -1,4 +1,7 @@
-// toekn: document_extraction_token, 11582f5a6a13241071f66fcbf3d525e651
+/*
+toekn: 
+    document_extraction_token, 11582f5a6a13241071f66fcbf3d525e651
+*/
 pipeline {
     agent any
     options {
@@ -51,13 +54,24 @@ pipeline {
         }
         stage('Validate and test on stage') {
            parallel {
-                stage('Run the service') {
+                stage('Run the service on stage') {
                     steps {
                         script{
                             StepName = "${env.STAGE_NAME}"
-                            // run the testing script of server part.
-                            bat "echo \"Run the testing script of server part\""
-                            bat "${PYTHON} scripts\\server\\app.py"
+                            try{
+                                // run the server on stage.
+                                bat "echo \"Run the server on stage\""
+                                bat "${PYTHON} server\\app.py"
+                            } catch(hudson.AbortException ae){
+                                // The process was explicitly killed by somebody wielding the kill program is acceptable
+                                // ref: https://wiki.jenkins.io/display/JENKINS/Job+Exit+Status
+                                if(ae.getMessage().contains('script returned exit code 15')){
+                                   print("error code 15 is acceptable.")
+                                } else {
+                                    throw ae
+                                }
+                            }
+
                         }
                     }
                     post{
@@ -73,13 +87,21 @@ pipeline {
                     steps {
                         script{
                             StepName = "${env.STAGE_NAME}"
-                            // run the testing script of data science part.
-                            bat "echo \"Run the testing script of data science part\""
-                            bat "${PYTHON} scripts\\test\\test.py"
+                            // check the server is on.
+                            bat "echo \"Check the server is on.\""
+                            bat "${PYTHON} server\\test\\check.py"
+
+                            // run the testing script of the server part.
+                            bat "echo \"Run the testing script of the server part\""
+                            bat "${PYTHON} -m unittest server/test/server_test.py"
+
+                            // run the testing script of the ui part.
+                            bat "echo \"Run the testing script of the ui part\""
+                            bat "${PYTHON} -m unittest server/test/ui_test.py"
 
                             // stop the running service.
                             bat "echo \"Stop the running service\""
-                            bat "${PYTHON} scripts\\test\\shutdown.py"
+                            bat "${PYTHON} server\\test\\shutdown.py"
                         }
                     }
                     post{
@@ -97,7 +119,8 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"                    
-                    // run the service
+                    // run the server on production.
+                    bat "echo \"Be able to start the server with the command: 'python server/app.py'\""
                 }
             }
             post{
