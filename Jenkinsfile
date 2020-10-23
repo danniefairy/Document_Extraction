@@ -120,8 +120,7 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"                    
                     // run the server on production.
-                    bat "echo \"Run the server on production\""
-                    bat "${PYTHON} server\\app.py"
+                    bat "echo \"Be able to start the server with the command: 'python server/app.py'\""
                 }
             }
             post{
