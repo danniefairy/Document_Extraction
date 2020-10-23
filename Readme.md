@@ -3,7 +3,7 @@
 ## Run the service
 - `python server/app.py`
 
-## Run the service
+## Web UI
 ![landing page](./images/page.PNG)
 
 ## Run the test
