@@ -1,7 +1,10 @@
 # Document Extraction
 
-## Run the service
+## How to use
+### Run the service
 - `python server/app.py`
+### Access the service
+- `http://localhost:5000/`
 
 ## Web UI
 ![landing page](./images/page.PNG)
