@@ -91,9 +91,13 @@ pipeline {
                             bat "echo \"Check the server is on.\""
                             bat "${PYTHON} server\\test\\check.py"
 
-                            // run the testing script of data science part.
-                            bat "echo \"Run the testing script of data science part\""
-                            bat "${PYTHON} -m unittest server/test/test.py"
+                            // run the testing script of the server part.
+                            bat "echo \"Run the testing script of the server part\""
+                            bat "${PYTHON} -m unittest server/test/server_test.py"
+
+                            // run the testing script of the ui part.
+                            bat "echo \"Run the testing script of the ui part\""
+                            bat "${PYTHON} -m unittest server/test/ui_test.py"
 
                             // stop the running service.
                             bat "echo \"Stop the running service\""

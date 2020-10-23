@@ -29,7 +29,6 @@ def shutdown():
 
 @app.route('/inference', methods=['POST'])
 def result():
-    print(request.get_data(), file=sys.stderr)
     document = request.get_json()['params']['document']
     result = document_extractor.run(document)
     translated_result = [translat_obj.text for translat_obj in translator.translate(result, dest='zh-tw')]
