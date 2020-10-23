@@ -4,7 +4,7 @@
 - `python server/app.py`
 
 ## Run the service
-![landing page](./images/page.png)
+![landing page](./images/page.PNG)
 
 ## Run the test
 ### Run the unit test on server side
