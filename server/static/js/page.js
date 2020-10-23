@@ -30,6 +30,7 @@ function getResult(){
         chinese_result = response.data.chinese_result;
 
         // set english result as default result
+        document.getElementById("language-selection").value = "en";
         set_result(english_result);
 
         // calculate the duration
