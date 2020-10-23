@@ -54,13 +54,13 @@ pipeline {
         }
         stage('Validate and test on stage') {
            parallel {
-                stage('Run the service') {
+                stage('Run the service on stage') {
                     steps {
                         script{
                             StepName = "${env.STAGE_NAME}"
                             try{
-                                // run the testing script of server part.
-                                bat "echo \"Run the testing script of server part\""
+                                // run the server on stage.
+                                bat "echo \"Run the server on stage\""
                                 bat "${PYTHON} server\\app.py"
                             } catch(hudson.AbortException ae){
                                 // The process was explicitly killed by somebody wielding the kill program is acceptable
@@ -119,7 +119,9 @@ pipeline {
             steps {
                 script{
                     StepName = "${env.STAGE_NAME}"                    
-                    // run the service
+                    // run the server on production.
+                    bat "echo \"Run the server on production\""
+                    bat "${PYTHON} server\\app.py"
                 }
             }
             post{
