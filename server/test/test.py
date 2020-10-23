@@ -5,6 +5,8 @@ ref:
     https://www.youtube.com/watch?v=JU6eSLsp6vI
 '''
 import logging
+import requests
+import json
 import unittest
 from .. src.document_extractor import BertDocumentExtractor
 
@@ -73,6 +75,28 @@ class TestDocumentExtractor(unittest.TestCase):
             got = BERT_DOCUMENT_EXTRACTOR.run(test_cases[test_case]['input'])
             self.assertEqual(type(got), test_cases[test_case]['want_type'])
 
+    def test_APIConnection(self):
+        test_cases = {
+            "Home page": {
+                "url": "http://localhost:5000/",
+                "json_data": "",
+                "want_status_code": 200 
+            },
+            "Extraction": {
+                "url": "http://localhost:5000/inference",
+                "json_data": {'params': {'document': ''}},
+                "want_status_code": 200 
+            },
+            "Wrong url": {
+                "url": "http://localhost:5000/wrong",
+                "json_data": {},
+                "want_status_code": 404 
+            }
+        }
+        for test_case in test_cases:
+            logging.info("Test Case: {}".format(test_case))
+            r = requests.post(url=test_cases[test_case]['url'], json=test_cases[test_case]['json_data'])
+            self.assertEqual(r.status_code, test_cases[test_case]['want_status_code'])
 
 if __name__ == '__main__':     
     unittest.main()
