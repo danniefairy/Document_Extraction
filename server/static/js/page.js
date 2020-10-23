@@ -1,8 +1,11 @@
 function init(){
     // register the event handler
     document.getElementById("submit_button").addEventListener("click", getResult);
+    document.getElementById("language-selection").addEventListener("change", switch_lang);
 
-    var result_document;
+    // initialize the result
+    var english_result;
+    var chinese_result;
 }
 
 function getResult(){
@@ -23,12 +26,11 @@ function getResult(){
     )
     .then((response) => {
         // get response
-        var result = response.data.result;
-        result_document = "";
-        for (var i=0; i<result.length;i++){
-            result_document += result[i]+"\n";
-        }
-        document.getElementById("result").value = result_document;
+        english_result = response.data.english_result;
+        chinese_result = response.data.chinese_result;
+
+        // set english result as default result
+        set_result(english_result);
 
         // calculate the duration
         var end_time = new Date();
@@ -43,9 +45,21 @@ function getResult(){
 
 }
 
-function concate_result(sentence){
-    result_document += item+"/n";
-    document.getElementById("result").innerHTML = result_document;
+function switch_lang(){
+    var e = document.getElementById("language-selection");
+    if(e.value=="en"){
+        set_result(english_result);
+    } else if (e.value=="zh-tw"){
+        set_result(chinese_result);
+    }
+}
+
+function set_result(result){
+    var result_document = "";
+    for (var i=0; i<result.length;i++){
+        result_document += result[i]+"\n";
+    }
+    document.getElementById("result").value = result_document;
 }
 
 function show_loading(){

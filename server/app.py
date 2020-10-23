@@ -8,6 +8,7 @@ import sys
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from src.document_extractor import BertDocumentExtractor
+from googletrans import Translator
 
 app = Flask(__name__)
 CORS(app)
@@ -30,7 +31,8 @@ def shutdown():
 def result():
     document = request.get_json()['params']['document']
     result = document_extractor.run(document)
-    return jsonify({"result": result})
+    translated_result = [translat_obj.text for translat_obj in translator.translate(result, dest='zh-tw')]
+    return jsonify({"english_result": result, "chinese_result": translated_result})
 
 
 @app.route('/', methods=['POST'])
@@ -43,8 +45,9 @@ def main_page():
     return render_template('page.html', length=0, result=[])
 
 if __name__ == '__main__':
-    # initialize the document extraction
+    # initialize the document extractor and translator
     document_extractor = BertDocumentExtractor()
+    translator = Translator()
 
     # run server
     app.run(debug=True)

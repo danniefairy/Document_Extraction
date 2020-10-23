@@ -94,3 +94,13 @@ textarea {
 
     text-align: center;
 }
+
+.language_selection_box{
+    margin-top: 50px;
+    
+    /* let dev align in the block and to the top */
+    display: inline-block;
+    vertical-align: top;
+
+    text-align: center;
+}
