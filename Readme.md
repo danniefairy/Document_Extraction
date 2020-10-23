@@ -1,5 +1,14 @@
 # Document Extraction
 
+## Run the service
+- `python server/app.py`
+
+## Run the test
+### Run the unit test on server side
+- `python -m unittest server/test/server_test.py`
+### Run the unit test on ui side
+- `python -m unittest server/test/ui_test.py`
+
 ## Run the CI/CD
 ### Run ngrok
 - `ngrok http 8080`
