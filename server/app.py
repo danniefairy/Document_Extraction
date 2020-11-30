@@ -15,6 +15,7 @@ import sys
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from src.document_extractor import BertDocumentExtractor
+from src.service import Service
 from googletrans import Translator
 
 app = Flask(__name__)
@@ -36,10 +37,15 @@ def shutdown():
 
 @app.route('/inference', methods=['POST'])
 def result():
-    document = request.get_json()['params']['document']
-    result = document_extractor.run(document)
-    translated_result = [translat_obj.text for translat_obj in translator.translate(result, dest='zh-tw')]
-    return jsonify({"english_result": result, "chinese_result": translated_result})
+    try:
+        result = Service(request, document_extractor)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"english_result": "Error: {}".format(e), "chinese_result": "錯誤: {}".format(e)})
+    #document = request.get_json()['params']['document']
+    #result = document_extractor.run(document)
+    #translated_result = [translat_obj.text for translat_obj in translator.translate(result, dest='zh-tw')]
+    #return jsonify({"english_result": result, "chinese_result": translated_result})
 
 
 @app.route('/', methods=['POST'])
