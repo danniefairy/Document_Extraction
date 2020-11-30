@@ -96,6 +96,7 @@ class TestDocumentExtractor(unittest.TestCase):
         for test_case in test_cases:
             logging.info("Test Case: {}".format(test_case))
             r = requests.post(url=test_cases[test_case]['url'], json=test_cases[test_case]['json_data'])
+            logging.info("Test Case INFO: {}".format(r.content))
             self.assertEqual(r.status_code, test_cases[test_case]['want_status_code'])
 
 
