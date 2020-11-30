@@ -42,10 +42,6 @@ def result():
         return jsonify(result)
     except Exception as e:
         return jsonify({"english_result": "Error: {}".format(e), "chinese_result": "錯誤: {}".format(e)})
-    #document = request.get_json()['params']['document']
-    #result = document_extractor.run(document)
-    #translated_result = [translat_obj.text for translat_obj in translator.translate(result, dest='zh-tw')]
-    #return jsonify({"english_result": result, "chinese_result": translated_result})
 
 
 @app.route('/', methods=['POST'])
