@@ -84,7 +84,7 @@ class TestDocumentExtractor(unittest.TestCase):
             },
             "Extraction": {
                 "url": "http://localhost:5000/inference",
-                "json_data": {'params': {'document': ''}},
+                "json_data": {"params": {"document": ""}},
                 "want_status_code": 200 
             },
             "Wrong url": {
@@ -96,7 +96,9 @@ class TestDocumentExtractor(unittest.TestCase):
         for test_case in test_cases:
             logging.info("Test Case: {}".format(test_case))
             r = requests.post(url=test_cases[test_case]['url'], json=test_cases[test_case]['json_data'])
+            logging.info("Content: {}".format(r.content))
             self.assertEqual(r.status_code, test_cases[test_case]['want_status_code'])
+
 
 if __name__ == '__main__':     
     unittest.main()
