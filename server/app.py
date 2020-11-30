@@ -15,7 +15,7 @@ import sys
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from src.document_extractor import BertDocumentExtractor
-from src.service import Service
+from service import Service
 from googletrans import Translator
 
 app = Flask(__name__)
