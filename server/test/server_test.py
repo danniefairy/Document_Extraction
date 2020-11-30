@@ -7,7 +7,6 @@ ref:
 import logging
 import requests
 import json
-import time
 import unittest
 from .. src.document_extractor import BertDocumentExtractor
 
@@ -85,7 +84,7 @@ class TestDocumentExtractor(unittest.TestCase):
             },
             "Extraction": {
                 "url": "http://localhost:5000/inference",
-                "json_data": {'params': {'document': ''}},
+                "json_data": {"params": {"document": ""}},
                 "want_status_code": 200 
             },
             "Wrong url": {
@@ -98,7 +97,7 @@ class TestDocumentExtractor(unittest.TestCase):
             logging.info("Test Case: {}".format(test_case))
             r = requests.post(url=test_cases[test_case]['url'], json=test_cases[test_case]['json_data'])
             self.assertEqual(r.status_code, test_cases[test_case]['want_status_code'])
-            time.sleep(0.1)
-            
+
+
 if __name__ == '__main__':     
     unittest.main()
