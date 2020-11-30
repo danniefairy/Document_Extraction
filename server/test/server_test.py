@@ -7,6 +7,7 @@ ref:
 import logging
 import requests
 import json
+import time
 import unittest
 from .. src.document_extractor import BertDocumentExtractor
 
@@ -97,6 +98,7 @@ class TestDocumentExtractor(unittest.TestCase):
             logging.info("Test Case: {}".format(test_case))
             r = requests.post(url=test_cases[test_case]['url'], json=test_cases[test_case]['json_data'])
             self.assertEqual(r.status_code, test_cases[test_case]['want_status_code'])
-
+            time.sleep(0.1)
+            
 if __name__ == '__main__':     
     unittest.main()
