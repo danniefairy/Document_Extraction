@@ -32,7 +32,7 @@ class TestDocumentExtractor(unittest.TestCase):
 
         # submit the empty content
         try:
-            ui.WebDriverWait(self.chrome, timeout=20).until(self.not_busy)
+            ui.WebDriverWait(self.chrome, timeout=15).until(self.not_busy)
         except Exception as e:
             self.chrome.quit()
             raise e
