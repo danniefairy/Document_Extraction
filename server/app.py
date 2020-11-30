@@ -47,6 +47,11 @@ def main():
     return render_template('page.html')
 
 
+@app.route('/')
+def main_page():
+    return render_template('page.html', length=0, result=[])
+
+
 if __name__ == '__main__':
     # initialize the document extractor and translator
     document_extractor = BertDocumentExtractor()
