@@ -2,7 +2,8 @@ def request_params_handler(request):
     document = request.get_json()['params']['document']
     return document
 
-def Service(request, document_extractor):
+
+def Service(request, document_extractor, translator):
     document = request_params_handler(request)
     result = document_extractor.run(document)
     translated_result = [translat_obj.text for translat_obj in translator.translate(result, dest='zh-tw')]

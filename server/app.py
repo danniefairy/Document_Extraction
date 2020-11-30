@@ -38,7 +38,7 @@ def shutdown():
 @app.route('/inference', methods=['POST'])
 def result():
     try:
-        result = Service(request, document_extractor)
+        result = Service(request, document_extractor, translator)
         return jsonify(result)
     except Exception as e:
         return jsonify({"english_result": "Error: {}".format(e), "chinese_result": "錯誤: {}".format(e)})
