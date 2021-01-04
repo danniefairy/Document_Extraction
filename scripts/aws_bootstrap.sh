@@ -16,3 +16,4 @@ python3 -m pip install googletrans==3.1.0a0
 python3 -m pip install --upgrade cython
 python3 -m pip install sklearn
 python3 -m pip install nltk
+python3 -c "import nltk;nltk.download('punkt')"
