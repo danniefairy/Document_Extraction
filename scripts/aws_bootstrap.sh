@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Install pip, python
+yum install epel-release -y
+yum install python36-pip -y
+yum install python36 -y
+
 # Install repo dependency
 yum install gcc -y
 python3 -m pip install Flask==1.1.1
