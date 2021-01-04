@@ -21,7 +21,7 @@ function getResult(){
     params.document = doc.value;
 
     axios.post(
-        'http://localhost:5000/inference', 
+        'http://' + endpoint + '/inference', 
         {params}            
     )
     .then((response) => {

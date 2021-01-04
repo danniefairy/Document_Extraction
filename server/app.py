@@ -46,12 +46,12 @@ def result():
 
 @app.route('/', methods=['POST'])
 def main():
-    return render_template('page.html')
+    return render_template('page.html', endpoint="localhost:5000")
 
 
 @app.route('/')
 def main_page():
-    return render_template('page.html', length=0, result=[])
+    return render_template('page.html', length=0, result=[], endpoint="localhost:5000")
 
 
 if __name__ == '__main__':
