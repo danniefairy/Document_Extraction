@@ -15,7 +15,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"  
                     //bat """\"powershell.exe\"  \"sh scripts/aws_deploy/aws_deploy.sh\""""      
-                    bat "where powershell.exe"          
+                    bat "whoami"          
                 }
             }                
         }
