@@ -16,8 +16,8 @@ pipeline {
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe" 
                     AWSCLI="C:\\Program Files\\Amazon\\AWSCLIV2\\aws.exe"
                     bat "\"${AWSCLI}\" configure list"
-                    //bat "\"${AWSCLI}\" ec2 create-key-pair --key-name KeyExample --query 'KeyMaterial' --output text > key-example.pem"
-                    //bat "\"${AWSCLI}\" cloudformation create-stack --stack-name exampleStack --template-body file://scripts\\aws_deploy\\template.json --parameters ParameterKey=KeyExample,ParameterValue=KeyExample"  
+                    bat "\"${AWSCLI}\" ec2 create-key-pair --key-name KeyExample --query 'KeyMaterial' --output text > key-example.pem"
+                    bat "\"${AWSCLI}\" cloudformation create-stack --stack-name exampleStack --template-body file://scripts\\aws_deploy\\template.json --parameters ParameterKey=KeyExample,ParameterValue=KeyExample"  
                 }
             }                
         }
