@@ -14,7 +14,7 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
-                    bat "${env:BRANCH_NAME}"
+                    bat "echo ${env:BRANCH_NAME}"
                 }
             }                
         }
