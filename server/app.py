@@ -71,5 +71,9 @@ if __name__ == '__main__':
     document_extractor = BertDocumentExtractor()
     translator = Translator()
 
+    # load config
+    endpoint = 'localhost'
+    port = 5000
+
     # run server
     app.run(host='0.0.0.0', port=port, debug=True)
