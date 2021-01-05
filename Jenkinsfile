@@ -13,11 +13,9 @@ pipeline {
             steps{
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    PYTHON="C:\\Users\\user\\Anaconda3\\python.exe" 
-                    AWSCLI="C:\\Program Files\\Amazon\\AWSCLIV2\\aws.exe"
-                    bat "\"${AWSCLI}\" iam list-access-keys"
-                    bat "\"${AWSCLI}\" ec2 create-key-pair --key-name KeyExample --query 'KeyMaterial' --output text > key-example.pem"
-                    bat "\"${AWSCLI}\" cloudformation create-stack --stack-name exampleStack --template-body file://scripts\\aws_deploy\\template.json --parameters ParameterKey=KeyExample,ParameterValue=KeyExample"  
+                    PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
+                    bat "D:\\Desktop\\notes\\CICD\\Document_Extraction\\credentials\\Update.bat"
+                    bat "scripts\\aws_deploy\\deploy.bat"  
                 }
             }                
         }
