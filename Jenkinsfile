@@ -19,6 +19,7 @@ pipeline {
                     bat "\"${AWSCLI}\" configure set aws_access_key_id AKIAR7KA7R3VOBTAREXO"
                     bat "\"${AWSCLI}\" configure set aws_secret_access_key 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"
                     bat "\"${AWSCLI}\" configure set region us-east-2"
+                    bat "\"${AWSCLI}\" ec2 create-key-pair --key-name KeyExample --query 'KeyMaterial' --output text > key-example.pem"
                     bat "\"${AWSCLI}\" cloudformation create-stack --stack-name exampleStack --template-body file://scripts\\aws_deploy\\template.json --parameters ParameterKey=KeyExample,ParameterValue=KeyExample"  
                 }
             }                
