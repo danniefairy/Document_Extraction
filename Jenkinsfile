@@ -15,7 +15,7 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe" 
                     //bat "C:\\Program Files\\Amazon\\AWSCLIV2\\aws.exe help"  
-                    //bat """\"d:\\Git\\git-bash.exe\"  -i -c \"sh scripts/aws_deploy/aws_deploy.sh\""""                    
+                    //bat """\"d:\\Git\\git-bash.exe\"  -i -c \"sh scripts/aws_deploy/deploy.sh\""""                    
                 }
             }                
         }
@@ -127,7 +127,7 @@ pipeline {
                         bat "echo 'Don't deploy on production environment in pr."
                     } else {
                         bat "echo 'Deploy on production environment!'"
-                        //bat "sh scripts\\aws_deploy\\aws_deploy.sh"
+                        //bat "sh scripts\\aws_deploy\\deploy.sh"
                     }
                 }
             }
