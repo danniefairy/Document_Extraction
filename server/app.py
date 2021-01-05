@@ -12,9 +12,11 @@ BERT abstractive summarization:
     https://arxiv.org/pdf/1912.08777.pdf
 '''
 import sys
+import argparse
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from src.document_extractor import BertDocumentExtractor
+from config.config import configuration
 from service.service import Service
 from googletrans import Translator
 
@@ -46,18 +48,28 @@ def result():
 
 @app.route('/', methods=['POST'])
 def main():
-    return render_template('page.html', endpoint="localhost:5000")
+    return render_template('page.html', endpoint="{}:{}".format(endpoint, port))
 
 
 @app.route('/')
 def main_page():
-    return render_template('page.html', length=0, result=[], endpoint="localhost:5000")
+    return render_template('page.html', length=0, result=[], endpoint="{}:{}".format(endpoint, port))
 
 
 if __name__ == '__main__':
+    # initialize args
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-e", "--env", type=str, default='local', help="running environment")
+    args = parser.parse_args()
+
+    # initialize config
+    conf = configuration(args.env)
+    endpoint = conf["endpoint"]
+    port = conf["port"]
+
     # initialize the document extractor and translator
     document_extractor = BertDocumentExtractor()
     translator = Translator()
 
     # run server
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
