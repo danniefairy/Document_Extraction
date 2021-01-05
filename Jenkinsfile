@@ -14,8 +14,6 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
-                    bn = "${GIT_BRANCH}"
-                    bat "echo ${bn}"
                 }
             }                
         }
@@ -123,8 +121,8 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"                    
                     // run the server on production.
                     bat "echo \"Be able to start the server with the command: 'python server/app.py'\""
-                    branch = "${env.BRANCH_NAME}"
-                    if (branch == 'stage') {
+                    branch = "${GIT_BRANCH}"
+                    if (branch == 'origin/stage') {
                         bat "echo 'I only execute on the stage branch'"
                     } else {
                         bat "echo 'I do not execute on the stage branch'"
