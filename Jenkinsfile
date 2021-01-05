@@ -122,9 +122,10 @@ pipeline {
                     // run the server on production.
                     branch = "${GIT_BRANCH}"
                     if (branch == 'origin/stage') {
-                        bat "echo 'I only execute on the stage branch'"
+                        bat "echo 'Don't deploy on production environment in pr."
                     } else {
-                        bat "echo 'I do not execute on the stage branch'"
+                        bat "echo 'Deploy on production environment!'"
+                        bat "sh scripts\\aws_deploy\\aws_deploy.sh"
                     }
                 }
             }
