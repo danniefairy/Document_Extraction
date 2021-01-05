@@ -124,7 +124,7 @@ pipeline {
                     if (env.BRANCH_NAME == 'stage') {
                         bat "echo 'I only execute on the stage branch'"
                     } else {
-                        bat "echo 'I only execute on the master branch'"
+                        bat "echo 'I do not execute on the stage branch'"
                     }
                 }
             }
