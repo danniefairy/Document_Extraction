@@ -46,12 +46,12 @@ def result():
 
 @app.route('/', methods=['POST'])
 def main():
-    return render_template('page.html', endpoint="localhost:5000")
+    return render_template('page.html', endpoint="{}:{}".format(endpoint, port))
 
 
 @app.route('/')
 def main_page():
-    return render_template('page.html', length=0, result=[], endpoint="localhost:5000")
+    return render_template('page.html', length=0, result=[], endpoint="{}:{}".format(endpoint, port))
 
 
 if __name__ == '__main__':
@@ -59,5 +59,9 @@ if __name__ == '__main__':
     document_extractor = BertDocumentExtractor()
     translator = Translator()
 
+    # load config
+    endpoint = 'localhost'
+    port = 5000
+
     # run server
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
