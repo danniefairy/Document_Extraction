@@ -15,8 +15,8 @@ pipeline {
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe" 
                     AWSCLI="C:\\Program Files\\Amazon\\AWSCLIV2\\aws.exe"
+                    bat "\"${AWSCLI}\" configure import --csv file://D:/Desktop/notes/CICD/Document_Extraction/credentials/dannie_accessKeys.csv/dannie_accessKeys.csv"
                     bat "\"${AWSCLI}\" cloudformation create-stack --stack-name exampleStack --template-body file://scripts/aws_deploy/template.json --parameters ParameterKey=KeyExample,ParameterValue=KeyExample"  
-                    //bat """\"d:\\Git\\git-bash.exe\"  -i -c \"sh scripts/aws_deploy/deploy.sh\""""                    
                 }
             }                
         }
