@@ -14,7 +14,7 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
-                    bat "D:\\Desktop\\notes\\CICD\\Document_Extraction\\credentials\\Update.bat"
+                    bat "D:\\Desktop\\notes\\CICD\\Document_Extraction\\credentials\\update.bat"
                     bat "scripts\\aws_deploy\\deploy.bat"  
                 }
             }                
