@@ -13,8 +13,8 @@ pipeline {
             steps{
                 script{
                     StepName = "${env.STAGE_NAME}"
-                    PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
-                    bat """\"d:\\Git\\git-bash.exe\"  -i -c \"aws help\""""
+                    PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"  
+                    bat """\"d:\\Git\\git-bash.exe\"  -i -c \"sh scripts/aws_deploy/aws_deploy.sh\""""                  
                 }
             }                
         }
@@ -126,7 +126,8 @@ pipeline {
                         bat "echo 'Don't deploy on production environment in pr."
                     } else {
                         bat "echo 'Deploy on production environment!'"
-                        bat "sh scripts\\aws_deploy\\aws_deploy.sh"
+                        //bat "sh scripts\\aws_deploy\\aws_deploy.sh"
+                        //bat """\"d:\\Git\\git-bash.exe\"  -i -c \"sh scripts/aws_deploy/aws_deploy.sh\""""
                     }
                 }
             }
