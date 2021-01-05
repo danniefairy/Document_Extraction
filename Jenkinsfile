@@ -14,7 +14,7 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
-                    bat "aws help"
+                    bat """\"d:\\Git\\git-bash.exe\"  -i -c \"aws help\""""
                 }
             }                
         }
