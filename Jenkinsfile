@@ -14,7 +14,7 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
-                    bat "echo \"${env}\""
+                    bat "echo \"${env.getEnvironment}\""
                 }
             }                
         }
