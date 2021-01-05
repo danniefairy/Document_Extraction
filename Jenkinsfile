@@ -120,7 +120,13 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"                    
                     // run the server on production.
-                    bat "echo \"Be able to start the server with the command: 'python server/app.py'\""
+                    branch = "${GIT_BRANCH}"
+                    if (branch == "origin/stage"){
+                        bat "echo \"Stage change will not be pushed to production environment\""
+                    } else {
+                        bat "echo \"Merge change!\""
+                    }
+
                 }
             }
             post{
