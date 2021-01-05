@@ -12,9 +12,11 @@ BERT abstractive summarization:
     https://arxiv.org/pdf/1912.08777.pdf
 '''
 import sys
+import argparse
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from src.document_extractor import BertDocumentExtractor
+from config.config import configuration
 from service.service import Service
 from googletrans import Translator
 
@@ -55,6 +57,16 @@ def main_page():
 
 
 if __name__ == '__main__':
+    # initialize args
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-e", "--env", type=str, default='local', help="running environment")
+    args = parser.parse_args()
+
+    # initialize config
+    conf = configuration(args.env)
+    endpoint = conf["endpoint"]
+    port = conf["port"]
+
     # initialize the document extractor and translator
     document_extractor = BertDocumentExtractor()
     translator = Translator()
