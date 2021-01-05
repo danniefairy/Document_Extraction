@@ -1,5 +1,5 @@
 /*
-toekn: 
+token: 
     document_extraction_token, 11582f5a6a13241071f66fcbf3d525e651
 */
 pipeline {
@@ -14,7 +14,8 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"  
-                    bat """\"d:\\Git\\git-bash.exe\"  -i -c \"sh scripts/aws_deploy/aws_deploy.sh\""""                  
+                    bat """\"powershell.exe\"  \"sh scripts/aws_deploy/aws_deploy.sh\""""      
+                                
                 }
             }                
         }
@@ -127,7 +128,6 @@ pipeline {
                     } else {
                         bat "echo 'Deploy on production environment!'"
                         //bat "sh scripts\\aws_deploy\\aws_deploy.sh"
-                        //bat """\"d:\\Git\\git-bash.exe\"  -i -c \"sh scripts/aws_deploy/aws_deploy.sh\""""
                     }
                 }
             }
