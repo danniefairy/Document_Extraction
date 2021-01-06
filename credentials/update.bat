@@ -1,0 +1,2 @@
+powershell -Command "(gc scripts\\aws_deploy\\deploy.bat) -replace 'MY_ACCESS_KEY', 'AKIAR7KA7R3VFY6WUJWD' | Out-File -encoding ASCII scripts\\aws_deploy\\deploy.bat"
+powershell -Command "(gc scripts\\aws_deploy\\deploy.bat) -replace 'MY_SECRET_KEY', 'gmfVXc2gjvjkReKTWpoVi3X4vrYLX3TOzAxQw3kS' | Out-File -encoding ASCII scripts\\aws_deploy\\deploy.bat"
