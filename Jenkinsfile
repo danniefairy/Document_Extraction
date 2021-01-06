@@ -14,8 +14,6 @@ pipeline {
                 script{
                     StepName = "${env.STAGE_NAME}"
                     PYTHON="C:\\Users\\user\\Anaconda3\\python.exe"
-                    bat "D:\\Desktop\\notes\\CICD\\Document_Extraction\\credentials\\update.bat"
-                    bat "scripts\\aws_deploy\\deploy.bat"  
                 }
             }                
         }
@@ -127,7 +125,8 @@ pipeline {
                         bat "echo 'Don't deploy on production environment in pr."
                     } else {
                         bat "echo 'Deploy on production environment!'"
-                        //bat "sh scripts\\aws_deploy\\deploy.sh"
+                        bat "D:\\Desktop\\notes\\CICD\\Document_Extraction\\credentials\\update.bat"
+                        bat "scripts\\aws_deploy\\deploy.bat"  
                     }
                 }
             }
