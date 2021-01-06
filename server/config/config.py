@@ -21,5 +21,5 @@ def configuration(env):
 
 
 def get_aws_instance_ip():
-    outputs = subprocess.check_output(['hostname', '-i'])
-    return outputs.decode("utf-8").replace('\n', '')
+    outputs = subprocess.check_output(['curl', 'wgetip.com'])
+    return outputs.decode("utf-8")
