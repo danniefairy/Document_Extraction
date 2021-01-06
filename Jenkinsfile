@@ -1,5 +1,5 @@
 /*
-toekn: 
+token: 
     document_extraction_token, 11582f5a6a13241071f66fcbf3d525e651
 */
 pipeline {
@@ -125,7 +125,8 @@ pipeline {
                         bat "echo 'Don't deploy on production environment in pr."
                     } else {
                         bat "echo 'Deploy on production environment!'"
-                        bat "sh scripts\\aws_deploy\\aws_deploy.sh"
+                        bat "D:\\Desktop\\notes\\CICD\\Document_Extraction\\credentials\\update.bat"
+                        bat "scripts\\aws_deploy\\deploy.bat"  
                     }
                 }
             }

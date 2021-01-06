@@ -6,17 +6,18 @@ CONFIG = {
         "port": 5000
     },
     "aws": {
-        "endpoint": "",
-        "port": 80
+        "endpoint": "AWS Endpoint",
+        "port": "AWS Port"
     }
 }
 
 
 def configuration(env):
-    if env == "local":
-        return CONFIG[env]
-    CONFIG[env]["endpoint"] = get_aws_instance_ip()
-    return CONFIG[env]
+    if env == "aws":
+        CONFIG["aws"]["endpoint"] = get_aws_instance_ip()
+        CONFIG["aws"]["port"] = 80
+        return CONFIG["aws"]
+    return CONFIG["local"]
 
 
 def get_aws_instance_ip():
