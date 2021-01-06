@@ -20,6 +20,10 @@
 - `ngrok http 8080`
 ### Let Jenkins connect to Github
 - Copy the url of the ngrok to the **Setting/Webhooks** as the format<br>`https://"Jenkins user ID":"Jenkins user token"@"Jenkins url"/job/"app name"/build?token="app token on Jenkins"`
+### Deploy on AWS EC2
+Once the pipeline triggered by **merge request** passes the test, it will deploy the service to AWS EC2 at the stage **Deploy on production**.
+- Check the stack status `aws cloudformation describe-stacks`
+- Remove the launching instance `aws cloudformation delete-stack --stack-name exampleStack`
 ### Pipeline
 ![landing page](./images/CICD.PNG)
 
