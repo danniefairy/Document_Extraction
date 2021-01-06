@@ -28,13 +28,16 @@
                             "echo \">>>> Starting boostraping <<<<\"\n",
                             "echo \"Update yum\"\n",
                             "yum update -y\n",
-                            "echo \"Install git and clone repo\"\n",
+                            "echo \">>>> Install git and clone repo <<<<\"\n",
                             "yum install git -y\n",
                             "git clone https://github.com/danniefairy/Document_Extraction.git\n",
-                            "echo \"Install repo dependency\"\n",
+                            "echo \">>>> Install repo dependency <<<<\"\n",
                             "cd /Document_Extraction\n",                         
                             "chmod +x scripts/aws_deploy/aws_bootstrap.sh\n",
-                            "sh scripts/aws_bootstrap.sh\n",
+                            "sh scripts/aws_deploy/aws_bootstrap.sh\n",
+                            "echo \">>>> Run the service <<<<\"\n",
+                            "cd server\n",
+                            "python3 app.py --env aws\n",
                             "echo \">>>> End of boostrap <<<<\"\n"
                         ]
                     ]
